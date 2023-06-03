@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DracoGames | BGMI Player | YouTuber</title>
+
+    <meta itemprop="name" content="MINORA Gaming | Girl Gamer | YouTuber">
+    <meta itemprop="description" content="A kind hearted person and calm">
+    <meta itemprop="image" content="https://my-room-in-3d.vercel.app/social/share-1200x630.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MINORA Gaming | Girl Gamer | YouTuber">
+    <meta name="twitter:description" content="A kind hearted person and calm">
+    <meta name="twitter:image" content="https://my-room-in-3d.vercel.app/social/share-1200x630.png">
+
+    <meta property="og:site_name" content="MINORA Gaming | Girl Gamer | YouTuber">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://minoragaming.vercel.app">
+    <meta property="og:title" content="MINORA Gaming | Girl Gamer | YouTuber">
+    <meta property="og:description" content="A kind hearted person and calm">
+    <meta property="og:image" content="https://my-room-in-3d.vercel.app/social/share-1200x630.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="experience"></div>
+    <div class="credits">
+        <span class="name-yt">Created by Epirium</span> 
+        <button onclick="location.href='https://www.youtube.com/@DracoGamesYT'" class="btn btn--light">
+            <span class="btn__inner">
+              <span class="btn__slide"></span>
+              <span id="subscriberCount" class="btn__content"> </span>
+            </span>
+          </button>
+          <span class="link-for-sub">👈 Subscribe</span>
+    </div>
+    
+    <script>
+    
+    const APIKey = 'AIzaSyCvF6ehlPoHHU8KIQxUYuW_sNbrMZW5ZEk';
+    const Userid = 'UCgxsE-A73Q344Di-_H-R35A';
+    const subscriberCount= document.getElementById('subscriberCount');
+    const viewCount = document.getElementById('viewCount');
+    const videoCount = document.getElementById('videoCount');
+   
+    let getdata = () => {
+        fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Userid}&key=${APIKey}`)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+            subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
+            viewCount.innerHTML = data["items"][0].statistics.viewCount;
+            videoCount.innerHTML = data["items"][0].statistics.videoCount;
+            
+        })
+    }
+   getdata();
+    </script>
+    
+</body>
+</html>
